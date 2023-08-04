@@ -8,6 +8,8 @@ const router = express.Router()
 const student = require('../schema/students');
 
 router.post('/register',async(req,res)=>{
+    
+    try{
     console.log(req.body)
     const data = new student(req.body)
 
@@ -22,6 +24,10 @@ router.post('/register',async(req,res)=>{
         res.json({
             message:"reg failure"
         })
+    }
+    }
+    catch(e){
+        console.log(e)
     }
 })
 
