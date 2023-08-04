@@ -24,3 +24,5 @@ router.post('/register',async(req,res)=>{
         })
     }
 })
+
+modules.exports=router
