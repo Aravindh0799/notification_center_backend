@@ -6,12 +6,39 @@ const router = express.Router()
 // const otp = require('otp-generator')
 // const JWT_SECRET = "ciwbuconciwevccwu1229238c/idb871cb91383hc}28vwrgbw8b748{62[]()69cwv";
 const student = require('../schema/students');
+const bcrypt  = require('bcrypt')
+
+
 
 router.post('/register',async(req,res)=>{
-    
+    const{name,email,password,resiStatus,dob,dept,year,religion,nationality,address} = req.body;
+    const encryptedPassword = await bcrypt.hash(password,10);
     try{
     console.log(req.body)
-    const data = new student(req.body)
+
+    const otheruser = await student.findOne({email:email})
+
+    if(otheruser){
+        return res.json({
+            status:409, 
+            message:"user already registered"
+        })
+    }
+    else{
+    const data = await new student({
+        name:name,
+        email:email,
+        password:encryptedPassword,
+        resiStatus:resiStatus,
+        dob:dob,
+        dept:dept,
+        year:year,
+        religion:religion,
+        nationality:nationality,
+        address:address
+    }
+        
+    )
 
     const result = await data.save()
 
@@ -26,8 +53,37 @@ router.post('/register',async(req,res)=>{
         })
     }
     }
+}
     catch(e){
         console.log(e)
+    }
+
+})
+
+
+router.post('/login',async(req,res)=>{
+    const{email,password}=req.body;
+
+    console.log(req.body)
+    try{
+        const user = await student.findOne({email})
+        if(user){
+            if(await bcrypt.compare(password, user.password)){
+                return res.json({
+                    status:"successful",
+                })
+            }
+            else{
+                return res.json({
+                    status:"error occured "
+                })
+            }
+        }
+
+
+    }
+    catch(err){
+        console.log(err)
     }
 })
 
