@@ -69,11 +69,13 @@ router.post('/login',async(req,res)=>{
         const user = await student.findOne({email})
         if(user){
             if(await bcrypt.compare(password, user.password)){
+                console.log(user)
                 return res.json({
                     status:"successful",
                 })
             }
             else{
+                console.log("error")
                 return res.json({
                     status:"error occured "
                 })
