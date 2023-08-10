@@ -13,7 +13,7 @@ const student = new mongoose.Schema({
         type:String,
         required:true
     },
-    residentialStatus:{
+    resiStatus:{
         type:String,
         required:true
     },
