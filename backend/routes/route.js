@@ -66,7 +66,7 @@ router.post('/login',async(req,res)=>{
 
     console.log(req.body)
     try{
-        const user = await student.findOne({email})
+        const user = await student.findOne({email:email})
         console.log(user,"from try")
         if(user){
             if(await bcrypt.compare(password, user.password)){
