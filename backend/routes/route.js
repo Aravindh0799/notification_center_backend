@@ -14,7 +14,7 @@ router.post('/register',async(req,res)=>{
     const{name,email,password,resiStatus,dob,dept,year,religion,nationality,address} = req.body;
     const encryptedPassword = await bcrypt.hash(password,10);
     try{
-    console.log(req.body)
+    console.log(req.body,encryptedPassword)
 
     const otheruser = await student.findOne({email:email})
 
