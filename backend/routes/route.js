@@ -44,12 +44,14 @@ router.post('/register',async(req,res)=>{
 
     if(result){
         res.json({
-            message:"success"
+            message:"success",
+            status:200
         })
     }
     else{
         res.json({
-            message:"reg failure"
+            message:"reg failure",
+            status:300
         })
     }
     }
