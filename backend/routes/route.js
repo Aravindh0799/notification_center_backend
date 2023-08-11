@@ -72,13 +72,13 @@ router.post('/login',async(req,res)=>{
             if(await bcrypt.compare(password, user.password)){
                 console.log(user.password)
                 return res.json({
-                    status:"successful",
+                    status:200,
                 })
             }
             else{
                 console.log("error")
                 return res.json({
-                    status:"error occured "
+                    status:400
                 })
             }
         }
