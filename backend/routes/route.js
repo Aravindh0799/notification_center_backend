@@ -78,7 +78,7 @@ router.post('/login',async(req,res)=>{
             else{
                 console.log("error")
                 return res.json({
-                    status:400
+                    status:300
                 })
             }
         }
