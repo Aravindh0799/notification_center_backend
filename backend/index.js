@@ -10,7 +10,7 @@ app.use(cors({
 const routes = require('./routes/route')
 app.use(routes)
 
-const port = process.env.port || 8080;
+const port = process.env.port || 8090;
 require('./conn')
 
 app.listen(port,()=>{

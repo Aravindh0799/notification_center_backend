@@ -13,35 +13,12 @@ const student = new mongoose.Schema({
         type:String,
         required:true
     },
-    resiStatus:{
-        type:String,
-        required:true
-    },
-    dob:{
-        type:String,
-        required:true
-    },
+   
     dept:{
         type:String,
         required:true
     },
-    year:{
-        type:String,
-        require:true
-    },
-    religion:{
-        type:String,
-        required:true
-    },
-    nationality:{
-        type:String,
-        required:true
-    },
-    address:{
-        type:String,
-        required:true
-    }
-   
+    
 })
 
 

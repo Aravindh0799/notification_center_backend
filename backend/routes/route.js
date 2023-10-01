@@ -29,13 +29,7 @@ router.post('/register',async(req,res)=>{
         name:name,
         email:email,
         password:encryptedPassword,
-        resiStatus:resiStatus,
-        dob:dob,
         dept:dept,
-        year:year,
-        religion:religion,
-        nationality:nationality,
-        address:address
     }
         
     )
