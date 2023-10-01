@@ -6,6 +6,7 @@ const router = express.Router()
 // const otp = require('otp-generator')
 // const JWT_SECRET = "ciwbuconciwevccwu1229238c/idb871cb91383hc}28vwrgbw8b748{62[]()69cwv";
 const student = require('../schema/students');
+const poster = require('../schema/postSchema');
 const bcrypt  = require('bcrypt')
 
 
@@ -89,6 +90,32 @@ router.post('/login',async(req,res)=>{
     }
     catch(err){
         console.log(err)
+    }
+})
+
+router.post('/newPost', async(req, res) => {
+    console.log("Request body: ", req.body);
+    try{
+        const data = new poster(req.body);
+        const result = await data.save();
+        if(result){
+            res.json({
+                message: "success",
+                id: result._id,
+            });
+        }
+        else{
+            res.json({
+                message: "Failure",
+            });
+        }
+    }
+    catch(err){
+        console.log("error occured in the api", err);
+        res.status(500).json({
+            message: "Failure",
+            error: err.message,
+        });
     }
 })
 
