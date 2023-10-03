@@ -119,4 +119,20 @@ router.post('/newPost', async(req, res) => {
     }
 })
 
+
+router.post("/getnotices",async(req,res) =>{
+    const{dept} = req.body;
+    // console.log(dept)
+    const notices = await poster.find({dept:dept})
+
+    if(notices){
+        return res.json(notices)
+    }
+    else{
+        return res.json({
+            message:"not found"
+        })
+    }
+})
+
 module.exports=router

@@ -21,6 +21,11 @@ const postSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    dept:{
+        type:String,
+        required:true,
+        default:"MCA"
+    },
     image:{
         type:String,
         required:true,
