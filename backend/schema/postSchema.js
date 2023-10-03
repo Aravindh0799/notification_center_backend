@@ -23,7 +23,7 @@ const postSchema = new mongoose.Schema({
     },
     dept:{
         type:String,
-        required:true,
+      
         default:"MCA"
     },
     image:{
