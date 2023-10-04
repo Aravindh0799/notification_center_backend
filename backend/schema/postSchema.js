@@ -9,6 +9,10 @@ const postSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    postedDate:{
+        type:String,
+        required:true,
+    },
     validityDate:{
         type:String,
         required:true,
